@@ -36,4 +36,11 @@ cd seu-repositorio
 - Após clonar o repositório execute o script devstart.sh com o comando "sh devstart.sh"
 - Após a execução do script acesse o container "dev_workspace_php" via Bash, acesse o projeto Laravel "api" e rode os comandos:
 - composer install 
-- npm install  
+- npm install
+- caso de tudo certo, execute a migration com o comando:
+- php artisan migrate
+
+---
+
+### Projeto Pronto para Uso
+  Após a execução de todos os comandos, seu ambiente de desenvolvimento Laravel estará configurado e pronto para uso!
