@@ -1,4 +1,4 @@
-# Nome do Projeto
+# Desafio FullStack
 
 Projeto desenvolvido em Laravel 10.2 com suporte a Docker, utilizando Bootstrap e DataTables para uma interface rica e responsiva.
 
@@ -9,8 +9,7 @@ Projeto desenvolvido em Laravel 10.2 com suporte a Docker, utilizando Bootstrap 
 - **Framework Principal:** Laravel 10.2
 - **Frontend:** Bootstrap 5, DataTables (jQuery), jQuery
 - **Ambiente de Contêiner:** Docker
-- **Banco de Dados:** [Informe o banco de dados, ex.: MySQL/PostgreSQL]
-- **Público-Alvo:** [Descreva o público do projeto, ex.: usuários internos ou finais]
+- **Banco de Dados:**  MySQL
 
 ---
 
@@ -33,3 +32,8 @@ Certifique-se de ter instalado:
 ```bash
 git clone https://github.com/Marcelohgs/Desafio-FullStack.git
 cd seu-repositorio
+```
+- Após clonar o repositório execute o script devstart.sh com o comando "sh devstart.sh"
+- Após a execução do script acesse o container "dev_workspace_php" via Bash, acesse o projeto Laravel "api" e rode os comandos:
+- composer install 
+- npm install  
