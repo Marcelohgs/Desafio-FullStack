@@ -1,0 +1,48 @@
+
+     /* Estilo geral da tabela */
+ table#myTable {
+     background-color: #ffffff; /* Fundo branco */
+     border: 1px solid #e2e8f0; /* Borda leve */
+     border-radius: 10px; /* Bordas arredondadas */
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+     overflow: hidden; /* Garante bordas arredondadas */
+ }
+
+/* Estilo do cabeçalho */
+table#myTable thead th {
+    background-color: #4a5568; /* Fundo cinza escuro */
+    color: #ffffff; /* Texto branco */
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* Linhas alternadas */
+table#myTable tbody tr:nth-child(odd) {
+    background-color: #f7fafc; /* Fundo mais claro */
+}
+
+table#myTable tbody tr:nth-child(even) {
+    background-color: #edf2f7; /* Fundo alternado */
+}
+
+/* Efeito hover */
+table#myTable tbody tr:hover {
+    background-color: #e2e8f0; /* Fundo mais escuro no hover */
+    cursor: pointer;
+}
+
+/* Estilo das células */
+table#myTable tbody td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #e2e8f0; /* Borda entre as células */
+}
+
+/* Ajuste de responsividade */
+.table-responsive {
+    border-radius: 10px; /* Bordas arredondadas no container responsivo */
+    overflow-x: auto; /* Rolagem horizontal para dispositivos menores */
+    margin-bottom: 15px;
+}
