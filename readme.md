@@ -24,6 +24,9 @@ Certifique-se de ter instalado:
 
 ---
 
+### Documentação API:
+https://documenter.getpostman.com/view/30843249/2sAYBbd8Xp#75725fca-2cf8-409f-94f9-270927b5b86c
+
 ### Instalação
 
 1. Clone este repositório:
