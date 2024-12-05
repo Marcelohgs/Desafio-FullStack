@@ -22,7 +22,7 @@
 
 <!-- Inicialização do DataTable -->
 <script>
-    $('#myTable').DataTable({
+    var table_dev =  $('#myTable').DataTable({
         language: {
             "url": "/js/lang/data-table-portugues-brasil.json"
         },
@@ -31,12 +31,17 @@
         colReorder: true,
         processing: true,
         serverSide: false,
+        columnDefs: [
+            { width: '10%', targets: 0, },
+            { width: '20%', targets: 2, },
+            { width: '20%', targets: 3, },
+        ],
         ajax: {
             url: '/api/v1/desenvolvedores',
             dataSrc: 'data',
             error: function (jqXHR, textStatus, errorThrown) {
                 var response = JSON.parse(jqXHR.responseText)
-                alert(response.message);
+                errorMsg(response.message)
             }
         },
         columns: [
@@ -64,30 +69,27 @@
     function deleteDev(id) {
         var deletar = confirm('Deseja deletar este Desenvolvedor?')
 
-
         if(deletar){
             $.ajax({
                 url: "/api/v1/desenvolvedores/"+id,
                 method: 'DELETE',
                 success: function (data, textStatus, jqXHR) {
                     if (jqXHR.status === 204){
-                        alert('Desenvolvedor excluído com sucesso!');
+                        successMsg("Desenvolvedor excluído com sucesso!");
                     }
                     else{
-                        alert('Erro ao excluir desenvolvedor! '+jqXHR.responseText);
+                        errorMsg('Erro ao excluir desenvolvedor! '+jqXHR.responseText);
                     }
-                    window.location.href= "/dev";
+                  table_dev.ajax.reload();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     var response = JSON.parse(jqXHR.responseText)
-                    alert(response.message);
-                    window.location.href= "/dev";
+                    errorMsg(response.message);
                 }
             });
         }
 
     }
-
 </script>
 </body>
 @endsection

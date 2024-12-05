@@ -18,6 +18,11 @@ class NivelController extends Controller
         try {
             $niveis = NivelModel::all();
 
+            foreach ($niveis as $nivel){
+                $qtd_devs = DevModel::where('nivel_id', $nivel->id)->get()->count();
+                $nivel['qtd_devs'] = $qtd_devs;
+            }
+
             if (empty($niveis)) {
                 return response()->json(['message' => 'Nenhum nível cadastrado.'], 404);
             }

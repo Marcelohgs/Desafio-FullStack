@@ -26,7 +26,6 @@
                             </select>
                         </div>
 
-                        <!-- Nome -->
                         <div class="mb-3">
                         <label for="nome" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" value="{{ isset($dev->nome) ?  $dev->nome : '' }}" required>
@@ -52,7 +51,6 @@
                             <input type="text" class="form-control" id="hobby" name="hobby" value="{{isset($dev->hobby) && old('hobby', $dev->hobby) }}" required>
                         </div>
 
-                        <!-- Botão de salvar -->
                         <button type="submit" class="btn btn-primary" id="btn-save-dev">
                             {{ $id === 0 ? 'Salvar' : 'Salvar Alterações' }}
                         </button>
@@ -82,18 +80,20 @@
                     data: data,
                     success: function (data, textStatus, jqXHR) {
                         if (jqXHR.status === 200 || jqXHR.status === 201) {
-                            alert('Desenvolvedor salvo com sucesso!');
+                            successMsg('Desenvolvedor salvo com sucesso!');
                         } else {
-                            alert('Erro ao salvar Desenvolvedor! ' + jqXHR.responseText);
+                            errorMsg('Erro ao salvar Desenvolvedor! ' + jqXHR.responseText);
                         }
-                        window.location.href = "/dev";
+                        setTimeout(() => {
+                            window.location.href = "/dev";
+                        }, "1000");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         try {
                             var response = JSON.parse(jqXHR.responseText);
-                            alert(response.message);
+                            errorMsg(response.message);
                         } catch (e) {
-                            alert('Erro desconhecido');
+                            errorMsg('Erro desconhecido');
                         }
                     }
                 });

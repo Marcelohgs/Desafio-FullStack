@@ -11,6 +11,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nome</th>
+                <th>Desenvolvedores Associados</th>
                 <th>Ações</th>
             </tr>
             </thead>
@@ -23,7 +24,7 @@
 
     <!-- Inicialização do DataTable -->
     <script>
-        $('#myTable').DataTable({
+        $table = $('#myTable').DataTable({
             language: {
                 "url": "/js/lang/data-table-portugues-brasil.json"
             },
@@ -32,17 +33,23 @@
             colReorder: true,
             processing: true,
             serverSide: false,
+            columnDefs: [
+                { width: '10%', targets: 0, },
+                { width: '30%', targets: 1, },
+                { width: '30%', targets: 2, },
+            ],
             ajax: {
                 url: '/api/v1/niveis',
                 dataSrc: 'data',
                 error: function (jqXHR, textStatus, errorThrown) {
                     var response = JSON.parse(jqXHR.responseText)
-                    alert(response.message);
+                    errorMsg(response.message);
                 }
             },
             columns: [
                 { data: 'id' },
                 { data: 'nivel' },
+                { data: 'qtd_devs' },
                 {
                     data: null,
                     render: function (data, type, row) {
@@ -68,17 +75,16 @@
                     method: 'DELETE',
                     success: function (data, textStatus, jqXHR) {
                         if (jqXHR.status === 204){
-                            alert('Nível excluído com sucesso!');
+                            successMsg("Nível excluído com sucesso!");
                          }
                         else{
-                            alert('Erro ao excluir nível! '+jqXHR.responseText);
+                            errorMsg("Erro ao excluir nível!" +jqXHR.responseText);
                         }
-                        window.location.href= "/nivel";
+                        $table.ajax.reload();
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        var response = JSON.parse(jqXHR.responseText)
-                        alert(response.message);
-                        window.location.href= "/nivel";
+                        var response = JSON.parse(jqXHR.responseText);
+                        errorMsg(response.message);
                     }
                 });
             }

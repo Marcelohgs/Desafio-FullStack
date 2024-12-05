@@ -13,21 +13,19 @@
                 <input type="number" class="form-control" id="id" name="id" value="{{ old('id', $id) }}" readonly>
             </div>
 
-            <!-- Nome -->
             <div class="mb-3">
                 <label for="nivel" class="form-label">Nível</label>
                 <input type="text" class="form-control" id="nivel" name="nivel" value="{{ $nivel->nivel ?? '' }}">
             </div>
 
-            <!-- Botão de salvar -->
             <button type="submit" class="btn btn-primary" id="btn-save-nivel">
                 {{ $id === 0 ? 'Salvar' : 'Salvar Alterações' }}
             </button>
 
-            <!-- Botão voltar -->
             <a class="btn btn-danger" href="{{ route('app.nivel') }}">Voltar</a>
         </form>
     </div>
+
 @endsection
 
 @section('script')
@@ -45,19 +43,22 @@
                     method: method,
                     data: data,
                     success: function (data, textStatus, jqXHR) {
+
                         if (jqXHR.status === 200 || jqXHR.status === 201) {
-                            alert('Nível salvo com sucesso!');
+                            successMsg("Nível salvo com sucesso!")
                         } else {
-                            alert('Erro ao salvar nível! ' + jqXHR.responseText);
+                            errorMsg('Erro ao salvar nível! ' + jqXHR.responseText)
                         }
-                        window.location.href = "/nivel";
+                        setTimeout(() => {
+                            window.location.href = "/nivel";
+                        }, "1000");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         try {
                             var response = JSON.parse(jqXHR.responseText);
-                            alert(response.message);
+                            errorMsg(response.message)
                         } catch (e) {
-                            alert('Erro desconhecido');
+                            errorMsg('Erro desconhecido');
                         }
                     }
                 });
