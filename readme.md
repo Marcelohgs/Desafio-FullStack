@@ -6,7 +6,7 @@ Projeto desenvolvido em Laravel 10.2 com suporte a Docker, utilizando Bootstrap 
 
 ## 📋 Visão Geral
 
-- **Framework Principal:** Laravel 10.2
+- **Framework Principal:** Laravel 10.10
 - **Frontend:** Bootstrap 5, DataTables (jQuery), jQuery
 - **Ambiente de Container :** Docker
 - **Banco de Dados:**  MySQL
