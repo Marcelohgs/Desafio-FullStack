@@ -51,7 +51,10 @@ cd seu-repositorio
 - Execute o Script abaixo para subir os Containers
 ```bash
 sh devstart.sh
-``` 
+```
+
+### Atenção: Confirme se todos os containers estão em execução
+
 - Acesse o container ***workspace_php*** via Bash:
 - Execute o comando passando o ID do container como parâmetro sem aspas:
 ```bash
