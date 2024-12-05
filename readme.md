@@ -36,9 +36,9 @@ git clone https://github.com/Marcelohgs/Desafio-FullStack.git
 cd seu-repositorio
 ```
 ### Configuração .env
-1. Configuração .env "USADO SOMENTE AMBIENTE DE DEV"
-- Duplique o arquivo .env.example e o renomeio somente para .env
-- no ".env" substitua as configurações do banco MYSQL por:
+1. Configuração .env "USADO SOMENTE EM AMBIENTE DE DEV"
+- Duplique o arquivo **.env.example** e renomeie o mesmo para **.env**
+- no **.env** substitua as configurações do banco MYSQL por:
 ```bash
   DB_CONNECTION=mysql    
   DB_HOST=mysql  
@@ -77,4 +77,4 @@ npm install
 ---
 
 ### Projeto Pronto para Uso
-Após a execução de todos os comandos, seu ambiente de desenvolvimento Laravel estará configurado e pronto para uso!
+Após a execução de todos os comandos, seu ambiente de desenvolvimento estará configurado e pronto para uso!
