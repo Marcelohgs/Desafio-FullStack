@@ -46,6 +46,10 @@ class NivelController extends Controller
     public function create(Request $request)
     {
         try {
+             $request->validate([
+                'nivel' => 'required'
+            ]);
+
             $data = $request->all();
             $nivel = new NivelModel();
 
@@ -68,6 +72,10 @@ class NivelController extends Controller
 
     public function update(Request $request, $id){
         try{
+             $request->validate([
+                'nivel' => 'required'
+            ]);
+
             $data = $request->all();
             $nivel = NivelModel::find($id);
 
@@ -94,7 +102,7 @@ class NivelController extends Controller
             $nivel->delete();
             return response()->json(['message' => 'Nível excluido com sucesso.'], 204);
         }catch(\Exception $e){
-            return response()->json(['message' => 'Erro ao excluir Nível!'], 500);
+            return response()->json(['message' => 'Erro ao excluir Nível! '.$e->getMessage()], 500);
         }
 
     }

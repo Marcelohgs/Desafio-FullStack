@@ -15,7 +15,7 @@
 
             <div class="mb-3">
                 <label for="nivel" class="form-label">Nível</label>
-                <input type="text" class="form-control" id="nivel" name="nivel" value="{{ $nivel->nivel ?? '' }}">
+                <input type="text" class="form-control" id="nivel" name="nivel" value="{{ $nivel->nivel ?? '' }}" required>
             </div>
 
             <button type="submit" class="btn btn-primary" id="btn-save-nivel">

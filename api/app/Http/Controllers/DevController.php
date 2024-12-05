@@ -42,6 +42,12 @@ class DevController extends Controller
     public function create(Request $request)
     {
         try {
+            $request->validate([
+                'nome' => 'required',
+                'data_nascimento' => 'required|date',
+                'hobby' => 'required'
+            ]);
+
             $data = $request->all();
             $dev = new DevModel();
 
@@ -61,6 +67,12 @@ public function ShowViewEdit($id){
 
     public function update(Request $request, $id){
         try{
+            $request->validate([
+                'nome' => 'required',
+                'data_nascimento' => 'required|date',
+                'hobby' => 'required'
+            ]);
+
             $data = $request->all();
             $dev = DevModel::find($id);
 
@@ -79,7 +91,7 @@ public function ShowViewEdit($id){
 
             return response()->json(['message' => 'Desenvolvedor excluido com sucesso!'], 204);
         }catch(\Exception $e){
-            return response()->json(['message' => 'Erro ao excluir Desenvolvedor!'], 400);
+            return response()->json(['message' => 'Erro ao excluir Desenvolvedor! '.$e->getMessage()], 400);
         }
     }
 
