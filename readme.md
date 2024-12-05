@@ -49,7 +49,7 @@ cd seu-repositorio
 ```bash
 sh devstart.sh
 ``` 
-- Acesse o container "dev_workspace_php" via Bash:
+- Acesse o container ***workspace_php*** via Bash:
 - Execute o comando passando o ID do container como parâmetro sem aspas:
 ```bash
 docker exec -it "id-container" bash
@@ -65,7 +65,7 @@ npm install
 ```
 
 ---
-- E para finalizar, dentro do container **workspace_php** execute os comandos abaixo para gerar a Key e rodar as Migration:
+- E para finalizar, dentro do container ***workspace_php*** execute os comandos abaixo para gerar a Key e rodar as Migration:
 ```bash
  php artisan key:generate
  php artisan migrate
