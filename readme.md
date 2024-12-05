@@ -21,7 +21,6 @@ Certifique-se de ter instalado:
 - **Docker**: versão mais recente ([Instruções de instalação](https://docs.docker.com/get-docker/))
 - **Docker Compose**: compatível com a sua versão do Docker
 - **Composer**: para gerenciar dependências PHP
-- **Node.js**: para compilar os assets do frontend
 
 ---
 
@@ -33,12 +32,42 @@ Certifique-se de ter instalado:
 git clone https://github.com/Marcelohgs/Desafio-FullStack.git
 cd seu-repositorio
 ```
-- Após clonar o repositório execute o script devstart.sh com o comando "sh devstart.sh"
-- Após a execução do script acesse o container "dev_workspace_php" via Bash, acesse o projeto Laravel "api" e rode os comandos:
-- composer install 
-- npm install
-- caso de tudo certo, execute a migration com o comando:
-- php artisan migrate
+### Configuração .env
+1. Configuração .env "USADO SOMENTE AMBIENTE DE DEV"
+- no ".env" substitua as configurações do banco MYSQL por:
+```bash
+  DB_CONNECTION=mysql    
+  DB_HOST=mysql  
+  DB_PORT=3306  
+  DB_DATABASE=dev  
+  DB_USERNAME=root  
+  DB_PASSWORD=password
+``` 
+
+- Execute o Script abaixo para subir os Contêiners
+```bash
+sh devstart.sh
+``` 
+- Acesse o Contêiner "dev_workspace_php" via Bash:
+- Execute o comando passando o ID do container como parâmetro sem aspas:
+```bash
+docker exec -it "id-container" bash
+```
+- Ainda dentro do Contêiner acesse o projeto "Api":
+```bash
+cd api
+```
+- Então execute:
+```bash
+composer install
+```
+
+---
+- E para finalizar, dentro do contêiner **workspace_php** execute os comandos abaixo para gerar a Key e rodar as Migration:
+```bash
+ php artisan key:generate
+ php artisan migrate
+ ```
 
 ---
 
