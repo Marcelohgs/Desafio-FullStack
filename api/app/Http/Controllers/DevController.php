@@ -24,7 +24,8 @@ public function ShowViewEdit($id)
     {
         $dev = DevModel::find($id);
         $niveis = NivelModel::all();
-        return view('dev.create', compact('dev', 'id', 'niveis'));
+        $nivelSelecionado = $dev->nivel_id;
+        return view('dev.create', compact('dev', 'id', 'niveis', 'nivelSelecionado'));
     }
 
 }

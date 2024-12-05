@@ -21,7 +21,10 @@
                             <label for="nivel_id" class="form-label">Nível</label>
                             <select class="form-select" id="nivel_id" name="nivel_id">
                                 @foreach($niveis as $nivel)
-                                    <option value="{{$nivel->id}}">{{$nivel->nivel}}</option>
+                                    <option value="{{ $nivel->id }}"
+                                            @if($nivel->id == $nivelSelecionado) selected @endif>
+                                        {{ $nivel->nivel }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -45,10 +48,9 @@
                             <input type="date" class="form-control" id="data_nascimento" name="data_nascimento"
                                    value="{{ isset($dev->data_nascimento) ? \Carbon\Carbon::parse($dev->data_nascimento)->format('Y-m-d') : '' }}" required>
                         </div>
-
                         <div class="mb-3">
                             <label for="hobby" class="form-label">Hobby</label>
-                            <input type="text" class="form-control" id="hobby" name="hobby" value="{{isset($dev->hobby) && old('hobby', $dev->hobby) }}" required>
+                            <input type="text" class="form-control" id="hobby" name="hobby" value="{{isset($dev->hobby) ? $dev->hobby : '' }}" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary" id="btn-save-dev">
