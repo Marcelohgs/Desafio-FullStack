@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [\App\Http\Controllers\DevController::class,'index']);
+
 Route::get('/dev', [\App\Http\Controllers\DevController::class,'index'])->name('app.dev');
 Route::get('/dev/cadastrar', [\App\Http\Controllers\DevController::class,'ShowViewRegister'])->name('dev.view.cadastrar');
 Route::get('/dev/editar/{id}', [\App\Http\Controllers\DevController::class,'ShowViewEdit'])->name('dev.view.editar');
