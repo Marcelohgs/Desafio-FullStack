@@ -1,6 +1,6 @@
 # Desafio FullStack
 
-Projeto desenvolvido em Laravel 10.2 com suporte a Docker, utilizando Bootstrap e DataTables para uma interface rica e responsiva.
+Projeto desenvolvido em Laravel 10.10 com suporte a Docker, utilizando Bootstrap e DataTables.
 
 ---
 
