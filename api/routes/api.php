@@ -20,14 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::prefix('v1')->group(function () {
-    Route::get('/desenvolvedores', [\App\Http\Controllers\DevController::class,'consultar']);
-    Route::post('/desenvolvedores', [\App\Http\Controllers\DevController::class,'create'])->name('dev.create');
-    Route::put('/desenvolvedores/{id}', [\App\Http\Controllers\DevController::class,'update'])->name('dev.update');
-    Route::delete('/desenvolvedores/{id}', [\App\Http\Controllers\DevController::class,'delete']);
+    Route::get('/desenvolvedores', [\App\Http\Controllers\Api\ApiDevController::class,'consultar']);
+    Route::post('/desenvolvedores', [\App\Http\Controllers\Api\ApiDevController::class,'create'])->name('dev.create');
+    Route::put('/desenvolvedores/{id}', [\App\Http\Controllers\Api\ApiDevController::class,'update'])->name('dev.update');
+    Route::delete('/desenvolvedores/{id}', [\App\Http\Controllers\Api\ApiDevController::class,'delete']);
 
     //Finalizado
-    Route::get('/niveis', [\App\Http\Controllers\NivelController::class,'consultar']);
-    Route::post('/niveis', [\App\Http\Controllers\NivelController::class,'create'])->name('nivel.create');
-    Route::put('/niveis/{id}', [\App\Http\Controllers\NivelController::class,'update'])->name('nivel.update');
-    Route::delete('/nivel/{id}', [\App\Http\Controllers\NivelController::class,'delete']);
+    Route::get('/niveis', [\App\Http\Controllers\Api\ApiNivelController::class,'consultar']);
+    Route::post('/niveis', [\App\Http\Controllers\Api\ApiNivelController::class,'create'])->name('nivel.create');
+    Route::put('/niveis/{id}', [\App\Http\Controllers\Api\ApiNivelController::class,'update'])->name('nivel.update');
+    Route::delete('/nivel/{id}', [\App\Http\Controllers\Api\ApiNivelController::class,'delete']);
 });

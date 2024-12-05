@@ -13,25 +13,6 @@ class DevController extends Controller
         return view('dev.index');
     }
 
-    public function consultar()
-    {
-        try {
-            $devs = DevModel::with('nivel')->get();
-
-            if (empty($devs)) {
-                return response()->json(['message' => 'Nenhum Desenvolvedor cadastrado.'], 404);
-            }
-
-            $response = [
-                'data' => $devs
-            ];
-
-            return response()->json($response,200);
-        }catch (\Exception $e){
-            return response()->json(['message' => $e->getMessage()], 500);
-        }
-    }
-
     public function ShowViewRegister(Request $request)
     {
         $niveis = NivelModel::all();
@@ -39,61 +20,11 @@ class DevController extends Controller
         return view('dev.create', compact('id', 'niveis'));
     }
 
-    public function create(Request $request)
+public function ShowViewEdit($id)
     {
-        try {
-            $this->validateFields($request);
-
-            $data = $request->all();
-            $dev = new DevModel();
-
-            $dev::create($data);
-
-            return response()->json(['message' => 'Desenvolvedor cadastrado com sucesso!'],201);
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'Erro ao cadastrar Desenvolvedor! ' . $e->getMessage()],400);
-        }
-    }
-
-public function ShowViewEdit($id){
         $dev = DevModel::find($id);
         $niveis = NivelModel::all();
         return view('dev.create', compact('dev', 'id', 'niveis'));
-}
-
-    public function update(Request $request, $id){
-        try{
-            $this->validateFields($request);
-
-            $data = $request->all();
-            $dev = DevModel::find($id);
-
-            $dev->update($data);
-
-            return response()->json(['message' => 'Desenvolvedor atualizado com sucesso!'],200);
-        }catch(\Exception $e){
-            return response()->json(['message' => 'Erro ao atualizar Desenvolvedor! ' . $e->getMessage()],400);
-        }
-    }
-
-    public function delete($id){
-        try{
-            $dev = DevModel::find($id);
-            $dev->delete();
-
-            return response()->json(['message' => 'Desenvolvedor excluido com sucesso!'], 204);
-        }catch(\Exception $e){
-            return response()->json(['message' => 'Erro ao excluir Desenvolvedor! '.$e->getMessage()], 400);
-        }
-    }
-
-    public function validateFields($request){
-        $request->validate([
-            'nome' => 'required',
-            'data_nascimento' => 'required|date',
-            'hobby' => 'required',
-            'nivel_id' => 'required'
-        ]);
     }
 
 }
