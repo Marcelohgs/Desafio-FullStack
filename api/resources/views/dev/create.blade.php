@@ -22,7 +22,7 @@
                             <select class="form-select" id="nivel_id" name="nivel_id">
                                 @foreach($niveis as $nivel)
                                     <option value="{{ $nivel->id }}"
-                                            @if($nivel->id == $nivelSelecionado) selected @endif>
+                                        {{ isset($nivelSelecionado) && $nivel->id == $nivelSelecionado ? 'selected' : '' }}>
                                         {{ $nivel->nivel }}
                                     </option>
                                 @endforeach
