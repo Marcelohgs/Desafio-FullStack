@@ -82,4 +82,20 @@ npm install
 ### Projeto Pronto para Uso
 Após a execução de todos os comandos, seu ambiente de desenvolvimento estará configurado e pronto para uso!
 
+### Criar Niveis e Desenvolvedores de teste
+Parar criar níveis de teste execute a seeder abaixo dentro do container ***workspace***
+
+```
+php artisan db:seed --class=NiveisSeeder
+```
+
+### Usuarío e senha Mysql em **minúsculo**
+    http://localhost:8080/
+
+- SERVIDOR : mysql
+- USUARIO: root
+- PASSWORD: password
+
+
+
 ### Link da Aplicação: http://localhost:81/
